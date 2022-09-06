@@ -17,7 +17,6 @@ function bubbleSort(array) {
 
 }
 
-
 function insertionSort(array) {
   // Implementar el método conocido como insertionSort para ordenar de menor a mayor
   // el array recibido como parámetro utilizando arreglos
@@ -25,7 +24,6 @@ function insertionSort(array) {
   // Tu código:
 
 }
-
 
 function selectionSort(array) {
   // Implementar el método conocido como selectionSort para ordenar de menor a mayor
