@@ -23,13 +23,13 @@
 
 ## QuickSort
 
-Ahora vamos a ver un algoritmo mucho más rápido, también es un poco más complejo. QuickSort está diseñado utilizando la Técnica __[Divide and Conquer](https://es.wikipedia.org/wiki/Algoritmo_divide_y_vencer%C3%A1s)__ que consiste en dividir un problema en subproblemas más pequeños, luego encontrar la solución de los problemas pequeños y combinarlas para encontrar la solución mayor.
+Ahora vamos a ver un algoritmo mucho más rápido, también es un poco más complejo. QuickSort está diseñado utilizando la Técnica **[Divide and Conquer](https://es.wikipedia.org/wiki/Algoritmo_divide_y_vencer%C3%A1s)** que consiste en dividir un problema en subproblemas más pequeños, luego encontrar la solución de los problemas pequeños y combinarlas para encontrar la solución mayor.
 Además _QuickSort_ es recursivo, o sea que se llama a sí mismo. Básicamente el algoritmo es así:
 
-* Elegir un elemento de la lista de elementos a ordenar, al que llamaremos pivote.
-* Mover los demás elementos de la lista a cada lado del pivote, de manera que a un lado queden todos los menores que él, y al otro los mayores. Los elementos iguales al pivote pueden ser colocados tanto a su derecha como a su izquierda, dependiendo de la implementación deseada. En este momento, el pivote ocupa exactamente el lugar que le corresponderá en la lista ordenada.
-* La lista queda separada en dos sublistas, una formada por los elementos a la izquierda del pivote, y otra por los elementos a su derecha.
-* Repetir este proceso de forma recursiva para cada sublista mientras éstas contengan más de un elemento. Una vez terminado este proceso todos los elementos estarán ordenados.
+- Elegir un elemento de la lista de elementos a ordenar, al que llamaremos pivote.
+- Mover los demás elementos de la lista a cada lado del pivote, de manera que a un lado queden todos los menores que él, y al otro los mayores. Los elementos iguales al pivote pueden ser colocados tanto a su derecha como a su izquierda, dependiendo de la implementación deseada. En este momento, el pivote ocupa exactamente el lugar que le corresponderá en la lista ordenada.
+- La lista queda separada en dos sublistas, una formada por los elementos a la izquierda del pivote, y otra por los elementos a su derecha.
+- Repetir este proceso de forma recursiva para cada sublista mientras éstas contengan más de un elemento. Una vez terminado este proceso todos los elementos estarán ordenados.
 
 ![QuickSort](../_src/assets/07-Algoritmos-I/Sorting_quicksort_anim.gif)
 
@@ -50,9 +50,9 @@ En el caso promedio, el orden es `O(n·log n)`.
 
 Este algoritmo está inspirado en QuickSort, así que tambien es recursivo. Lo que hace es lo siguiente:
 
-* Divide el conjunto en dos grupos iguales
-* Ordena recursivamente los dos grupos
-* Junta (o mergea) los grupos ordenados.
+- Divide el conjunto en dos grupos iguales
+- Ordena recursivamente los dos grupos
+- Junta (o mergea) los grupos ordenados.
 
 ![MergeSort](../_src/assets/07-Algoritmos-I/mergesort.gif)
 
@@ -71,7 +71,7 @@ Este algoritmo tambien tiene orden de `O(n·log n)` pero, contrario a Quicksort,
 
 Primero analizemos qué complejidad tiene el armado del Heap. Cómo habiamos visto, cuando ingresamos un nuevo nodo, tenemos que ver si se siguen cumpliendo las dos reglas de un _heap_: que sea un arbol binario completo, y que cada nodo sea mayor que sus hijos. Básicamente lo que tenemos que controlar es que cuando ingresamos un nuevo nodo, si su valor sea menor que el padre, no hacemos nada. Si no, tenemos que cambiar ese nodo por el padre y controlar de nuevo, si es menor terminamos, o seguimos cambiando hasta llegar al nodo raíz. Habrá veces que cuando ingresas un valor nuevo, ese ya sea menor que el nodo padre, asi que no tenes que hacer nada, si siempre pasara lo mismo el costo de armar el heap sería `O(n)`. Ahora, el peor caso, es tener que llegar hasta la raíz haciendo swaps, sabemos que la altura de un árbol binario es del orden de `log(n)`, por lo tanto en el peor de los casos deberiamos recorrerlo `n` veces, por lo tanto la máxima complejidad es de `n*log( n )`.
 
-Ahora veamos con __Heapsort__ utiliza esta estructura para ordenar. Como vemos el heap está _semi_ ordenado. Por lo pronto sabemos que el nodo ráiz, tiene el máximo valor. Sabiendo eso, lo que hace el algoritmo es sacar el nodo raíz (seria el primer elemento ordenado),  y pone el última nodo del heap en la raíz -esto seguramente rompe la regla de que los padres sean mayores que sus hijos-, y luego reacomoda el árbol para que vuelva a ser un heap. El algoritmo repite esto hasta que no queden nodos en el heap. El resultado es el arreglo ordenado!
+Ahora veamos con **Heapsort** utiliza esta estructura para ordenar. Como vemos el heap está _semi_ ordenado. Por lo pronto sabemos que el nodo ráiz, tiene el máximo valor. Sabiendo eso, lo que hace el algoritmo es sacar el nodo raíz (seria el primer elemento ordenado), y pone el última nodo del heap en la raíz -esto seguramente rompe la regla de que los padres sean mayores que sus hijos-, y luego reacomoda el árbol para que vuelva a ser un heap. El algoritmo repite esto hasta que no queden nodos en el heap. El resultado es el arreglo ordenado!
 
 ![HeapSort](../_src/assets/07-Algoritmos-I/heapSort.gif)
 
@@ -128,7 +128,7 @@ D   E   F
 #### Depth First Search
 
 Una búsqueda tipo DFS visitaría los nodos en el siguiente orden:
-`A, B, D, C, E, F`. Gráficamente, vamos _bajando_ a través del árbol hasta llegar a una __hoja__. Luego seguidos por la siguiente rama y la recorremos del mismo modo.
+`A, B, D, C, E, F`. Gráficamente, vamos _bajando_ a través del árbol hasta llegar a una **hoja**. Luego seguidos por la siguiente rama y la recorremos del mismo modo.
 
 #### Breadth First Search
 
@@ -144,7 +144,7 @@ La otra forma: BFS, visitaría los nodos de esta manera:
 Eso es la recursión, es cuando un un método se llama a sí mismo. Por ejemplo, el algoritmo quick sort es recursivo (se puede implementar de forma recursiva o no), ya que divide un conjunto y luego ordenada cada subconjunto usando quick Sort tambien.
 La recursión puede ser muy poderosa, y puede ayudarnos a resolver algunos problemas que sin ella serían complicados de resolver. A veces puede no ser intuitiva, ya que estamos acostumbrados a pensar de manera iterativa más que recursiva.
 Veamos un ejemplo: Habiamos visto la función factorial, básicamente el factorial de n o n! es `n! = 1 * 2 * 3 * 4 * ... * n`. ej: `4! = 1 * 2 * 3 * 4`.
-Si lo definimos recursivamente, podemos decir que `n! = n * ( n-1 )!`. O sea, el factorial de n es igual a n por el factorial de n-1. Si lo piensan van a ver que se forma la misma fórmula que antes, pero hay un caso particular que es cuando `n = 0`, en ese caso tenemos que definir que hacemos. Por definición `0! = 1`, así que ese va a ser nuestro __caso base__: es el caso que devuelve algo concreto y donde se termina la recursión, su resultado va a ser usado para calcular los resultados de cada llamada.
+Si lo definimos recursivamente, podemos decir que `n! = n * ( n-1 )!`. O sea, el factorial de n es igual a n por el factorial de n-1. Si lo piensan van a ver que se forma la misma fórmula que antes, pero hay un caso particular que es cuando `n = 0`, en ese caso tenemos que definir que hacemos. Por definición `0! = 1`, así que ese va a ser nuestro **caso base**: es el caso que devuelve algo concreto y donde se termina la recursión, su resultado va a ser usado para calcular los resultados de cada llamada.
 O sea que para definir recursivamente la función factorial vamos a decir:
 
 ```js
@@ -164,11 +164,11 @@ Si ejecutamos eso tendriamos algo así:
    = 4 * 3 * 2 * 1 * 1  <-- acá terminó la ejecución
 ```
 
-Esto que vemos arriba, es lo que se llama la __pila de recursión__, básicamente se va armando una pila en memoria, ya que la primera llamada necesita el resultado de la segunda, y la segunda de la tercera, y así sucesivamente hasta que llegamos al caso base. Desde ahí se puede empezar a resolver cada llamada dentro de la pila hasta que la completamos entera y tenemos nuestro resultado.
+Esto que vemos arriba, es lo que se llama la **pila de recursión**, básicamente se va armando una pila en memoria, ya que la primera llamada necesita el resultado de la segunda, y la segunda de la tercera, y así sucesivamente hasta que llegamos al caso base. Desde ahí se puede empezar a resolver cada llamada dentro de la pila hasta que la completamos entera y tenemos nuestro resultado.
 
 ![RecursionOverFlow](../_src/assets/07-Algoritmos-I/recursionof.jpg)
 
-Por lo tanto tenemos que estar seguros que cuando llamamos a un función recursiva no llenemos el _runtime stack_, ya que al llenarse va a crashear el runtime con un error de __[Stack Overflow](http://stackoverflow.com)__, o _desbordamiento de pila_.
+Por lo tanto tenemos que estar seguros que cuando llamamos a un función recursiva no llenemos el _runtime stack_, ya que al llenarse va a crashear el runtime con un error de **[Stack Overflow](http://stackoverflow.com)**, o _desbordamiento de pila_.
 
 ## Homework
 
