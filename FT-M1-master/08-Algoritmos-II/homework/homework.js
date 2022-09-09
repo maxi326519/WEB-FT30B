@@ -6,7 +6,7 @@ function quickSort(array) {
   // el array recibido como parámetro
   // Devolver el array ordenado resultante
   // Tu código:
-
+  
 }
 
 function mergeSort(array) {
@@ -16,6 +16,14 @@ function mergeSort(array) {
   // Tu código:
 
 }
+
+let newArr = [1,6,2,9,3,1,0,8,2,5,4];
+
+console.log(quickSort());
+console.log(newArr);
+
+console.log(mergeSort());
+console.log(newArr);
 
 // No modificar nada debajo de esta línea
 // --------------------------------

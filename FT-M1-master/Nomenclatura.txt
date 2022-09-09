@@ -1,0 +1,12 @@
+Arboles:
+Raíz - El nodo superior del árbol.
+Padre - Nodo con hijos.
+Hijo - Nodo descendiente de otro nodo.
+Hermanos - Nodos que comparten el mismo padre.
+Hojas - Nodos sin hijos.
+Nivel - El nivel de un nodo está definido por el número de conexiones entre el nodo y la raíz.
+Camino - Una secuencia de nodos por los que tenemos que pasar para llegar de un nodo a otro.
+
+Dirigido:           Que solo se pueda acceder al siguiente nodo pero no al anterior, como en las listas enlazadas
+Conexo:             Que no existan nodos sueltos
+Arbol balanceado:   Que los niveles de ambos lados sean iguales o diferentes por un nivel
