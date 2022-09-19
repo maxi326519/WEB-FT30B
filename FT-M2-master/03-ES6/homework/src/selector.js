@@ -9,16 +9,38 @@ var traverseDomAndCollectElements = function(matchFunc, startEl) {
   // usa matchFunc para identificar elementos que matchien
 
   // TU CÓDIGO AQUÍ
-  
-};
+  let arrChildren = startEl.children;
+
+  //Condicion de corte
+  if(arrChildren === undefined)
+    return false;
+
+  if(matchFunc(startEl))
+    resultSet.push(startEl) 
+
+  for (let i = 0; i<startEl.children.length;i++) {
+    let childResult = traverseDomAndCollectElements(matchFunc,startEl.children[i]) 
+ 
+    resultSet = [...resultSet,...childResult]
+   }
+
+  return resultSet;
+};  
 
 // Detecta y devuelve el tipo de selector
 // devuelve uno de estos tipos: id, class, tag.class, tag
 
 
-var selectorTypeMatcher = function(selector) {
-  // tu código aquí
-  
+var selectorTypeMatcher = function(selector) {  // '.small'  -  '#small'  -  'div.small' => ["d","i"...]
+  // tu código aquí,
+  if(selector[0] === '#')
+    return 'id'
+  if(selector[0] === '.')
+    return 'class'
+  if(selector.split('').includes('.'))
+    return 'tag.class'
+  else
+    return 'tag'
 };
 
 // NOTA SOBRE LA FUNCIÓN MATCH
@@ -26,18 +48,39 @@ var selectorTypeMatcher = function(selector) {
 // parametro y devuelve true/false dependiendo si el elemento
 // matchea el selector.
 
-var matchFunctionMaker = function(selector) {
+var matchFunctionMaker = function(selector = "div") {
   var selectorType = selectorTypeMatcher(selector);
-  var matchFunction;
+
+  var matchFunction; 
+
   if (selectorType === "id") { 
-   
-  } else if (selectorType === "class") {
-    
-  } else if (selectorType === "tag.class") {
-    
-  } else if (selectorType === "tag") {
-    
+      matchFunction = function (nodo){
+      if ('#'+nodo.id === selector) {return true}
+      return false
+     }
+  } 
+
+  else if (selectorType === "class") {
+    matchFunction = nodo => {
+      for(let i = 0; i< nodo.classList.length; i++ ) {
+      if ('.'+nodo.classList[i] === selector) return true
+      }
+      return false
+    }
   }
+    // div small
+    else if (selectorType === "tag.class") {
+      matchFunction = nodo => {
+      let [tag, clase] = selector.split('.')
+
+      return matchFunctionMaker(tag)(nodo)&&matchFunctionMaker('.'+clase)(nodo)
+      }
+  }else if (selectorType === "tag") {
+    matchFunction = nodo => {
+      return nodo.tagName.toLowerCase() === selector.toLowerCase()
+    }
+  }
+
   return matchFunction;
 };
 
