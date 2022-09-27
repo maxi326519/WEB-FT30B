@@ -5,8 +5,8 @@ import './styles/Nav.css';
 export default function Nav({onSearch}){
 
     return (
-        <div>
-            <SearchBar onSearch/>
-        </div>
+        <nav>
+            <SearchBar onSearch={onSearch}/>
+        </nav>
     );
 }
