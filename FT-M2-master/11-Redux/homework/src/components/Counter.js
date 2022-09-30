@@ -1,43 +1,50 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { increment, decrement } from '../actions';
+import { createStore } from 'redux';
 
 class Counter extends Component {
+
+    constructor(props){
+        super(props)
+        this.dispatch = this.props.store.dispatch;
+    }
+
     // Extra Credit
     incrementIfOdd = () => {
       //Implementar una función de incremento que sólo aumenta si el valor del contador es impar
+      if(this.props.store.getState().count%2 !== 0){
+            this.dispatch(increment());
+        }
     };
     // Extra Credit
     incrementAsync = () => {
         //  Implementar una función de incremento que aumenta después de esperar un segundo
+        setTimeout(() => this.dispatch(increment()), 1000)
     };
 
     render() {
         // Completa las funciones onClick de los botones
         // Al hacer clic en estos botones, el recuento debe disminuir o aumentar en consecuencia
+
         return (
             <p>
                 Clickeado: {this.props.count} veces
-                <button onClick={() => {/* Completar */ }}>
-                    + {/* Incremeta */}
-                </button>
-                <button onClick={() => {/* Completar */ }}>
-                    -  {/* Decrementa */}
-                </button>
-                 {/* Si quieres hacer los extra credit puede descomentar las lineas de abajo */}
-                {/* <button onClick={this.incrementIfOdd}>
+                <button onClick={()=>{this.dispatch(increment())}}>+</button>
+                <button onClick={()=>{this.dispatch(decrement())}}>-</button>
+                <button onClick={this.incrementIfOdd}>
                     incrementa si es impar
                 </button>
                 <button onClick={this.incrementAsync}>
                     Incrementa despues de un segundos
-                </button>  */}
+                </button>
             </p>
         );
     }
 }
 
 // La función mapStateToProps especifica qué porción del árbol de estados necesita recibir este componente.
-// En este caso, dado que nuestro store de redux sólo almacena el valor del contador,
+// En este caso, dado que nuestro prop de redux sólo almacena el valor del contador,
 // este componente recibe el estado completo.
 // Sin embargo, en una aplicación redux más compleja,
 // recibiría sólo las partes relevantes que necesita del objeto de estado.
