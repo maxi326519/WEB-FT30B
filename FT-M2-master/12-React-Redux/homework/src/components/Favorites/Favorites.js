@@ -17,6 +17,4 @@ export class ConnectedList extends Component {
   }
 }
 
-
-
 export default (ConnectedList);
