@@ -4,10 +4,10 @@
 
 En esta homework vamos a desarrollar una API que nos permitirá gestionar Posts (entendiendo como tal a una publicación similar a las que hacemos en las redes sociales) y realizar las siguientes acciones:
 
-* Consultar Posts existentes
-* Crear nuevos Posts
-* Actualizar Posts existentes
-* Eliminar Posts existentes
+- Consultar Posts existentes
+- Crear nuevos Posts
+- Actualizar Posts existentes
+- Eliminar Posts existentes
 
 Por lo que estaríamos construyendo algo similar a lo que sería un gestor de publicaciones de cualquiera de las redes sociales que conocemos
 
@@ -31,6 +31,7 @@ Cada `Post` va a ser un objeto con la siguiente estructura:
   contents: "Contenido del Post"
 }
 ```
+
 Tanto `author` como `title` y `contents` van a ser del tipo String.
 
 Desarrollar las siguientes rutas dentro del archivo `server.js` de la carpeta `src`
@@ -42,51 +43,52 @@ Básicamente, la creación de rutas sirve para determinar cómo una aplicación 
 Es por esto que la definición de creación de rutas es la siguiente:
 
 ```javascript
-server.METHOD(PATH, HANDLER)
+server.METHOD(PATH, HANDLER);
 ```
 
 Donde:
 
-  - server es una instancia de express
-  - METHOD es un método de solicitud HTTP
-  - PATH es la vía de acceso al servidor
-  - HANDLER es la función que se ejecuta cuando se hace el direccionamiento a la ruta, siempre recibe como parámetro dos variables, req por request y res por response.
+- server es una instancia de express
+- METHOD es un método de solicitud HTTP
+- PATH es la vía de acceso al servidor
+- HANDLER es la función que se ejecuta cuando se hace el direccionamiento a la ruta, siempre recibe como parámetro dos variables, req por request y res por response.
 
 Veamos ahora un ejemplo más concreto. El método GET se utiliza para leer la representación de un resource, que puede estar en distintos formatos tales como una imagen, un JSON, un XML, etc. Por lo que utilizando nuestra instancia de express vamos a invocar a get indicando la ruta que queremos para `'/'` y mandar una response con un "Hola mundo!" como texto.
 
 ```javascript
-server.get('/', function(req, res){ //Ruta para un GET a /
-  res.send('Hola mundo!'); // response "Hola mundo!" en la pagina principal
+server.get("/", function (req, res) {
+  //Ruta para un GET a /
+  res.send("Hola mundo!"); // response "Hola mundo!" en la pagina principal
 });
 ```
 
 Si en lugar de texto queremos que se envíe con el formato JSON podríamos hacer lo siguiente:
 
 ```javascript
-server.get('/', function(req, res){
+server.get("/", function (req, res) {
   var obj = {
-    saludo: 'Hola mundo!'
-  }
-  res.json( obj );
+    saludo: "Hola mundo!",
+  };
+  res.json(obj);
 });
 ```
 
 Ahora supongamos que queremos setear el status de la response como 200 para indicar que la solicitud ha tenido éxito, para eso utilizaremos `res.status()`.
 
 ```javascript
-server.get('/', function(req, res){
-  res.status(200).send('Hola mundo!');
+server.get("/", function (req, res) {
+  res.status(200).send("Hola mundo!");
 });
 ```
 
 Otro punto a tener en cuenta es que `req.body` se usa para tener los parámetros que son enviados por el cliente como parte de un request. Entonces, si por ejemplo quisiera acceder a la propiedad name podria utilizar `req.body.name`.
 
 ```javascript
-server.get('/', function(req, res){
-   var obj = {
-    saludo: 'Hola' + req.body.name,
-  }
-  res.json( obj );
+server.get("/", function (req, res) {
+  var obj = {
+    saludo: "Hola" + req.body.name,
+  };
+  res.json(obj);
 });
 ```
 
@@ -120,15 +122,15 @@ Cuando se ejecute un request del tipo `GET` en la ruta `/posts`:
 
 Cuando se ejecuta el request del tipo `GET` en la ruta `posts/:author`:
 
-- Si existen Post del autor indicado en el parametro `author`, devolverlos.  
+- Si existen Post del autor indicado en el parametro `author`, devolverlos.
 
 - Caso contrario, devolver un JSON con un objeto de la forma `{error: "No existe ningun post del autor indicado"}`. Verificar que el código de error sea el adecuado.
-   
-                                                                                                                   
+
 ### `GET /posts/:author/:title`
+
 Cuando se ejecuta el request del tipo `GET` en la ruta `posts/:author/:title`:
 
-- Si existen Post que coincidan con ambos parametros, `author` y `title` devolver aquellos Posts que correspondan con la información provista, es decir que coincidan `author` y `title`. 
+- Si existen Post que coincidan con ambos parametros, `author` y `title` devolver aquellos Posts que correspondan con la información provista, es decir que coincidan `author` y `title`.
 
 - Caso contrario, devolver un JSON con un objeto de la forma `{error: "No existe ningun post con dicho titulo y autor indicado"}`. Verificar que el código de error sea el adecuado.
 
@@ -141,7 +143,6 @@ Cuando se ejecute un request del tipo `PUT` en la ruta `/posts`
 - En el caso de que el `id` no corresponda a un post válido existente, devolver un JSON similar al anterior modificando el mensaje de error por uno adecuado para este caso.
 
 - Si se encuentran todos los parámetros y el `id` es válido, actualizar los datos del `title` y `contents` del Post que coincida con dicho `id` . Devolver un JSON con el objeto recientemente actualizado.
-
 
 ### `DELETE /posts`
 
@@ -193,10 +194,10 @@ Una vez instalado podrán acceder a la siguiente pantalla principal de Postman:
 
 - Indicar que tipo de Request queremos:
 
-    * GET
-    * POST
-    * PUT
-    * DELETE
+  - GET
+  - POST
+  - PUT
+  - DELETE
 
 - La URL sobre la cual vamos a realizar el request (En este caso será http://localhost:3000/)
 

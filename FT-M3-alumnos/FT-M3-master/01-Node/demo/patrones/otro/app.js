@@ -26,6 +26,12 @@ saludo3b.saludar();
 var saludo4 = require('./saludo4'); //Importamos la habilidad para crear un nuevo objeto
 var sld = new saludo4(); //Ahora creamos un nuevo objeto usando el constructor importado
 sld.saludar();
+sld.saludo = 'hola';
+sld.saludar();
+
+var saludo4 = require('./saludo4'); //Importamos la habilidad para crear un nuevo objeto
+var sld = new saludo4(); //Ahora creamos un nuevo objeto usando el constructor importado
+sld.saludar();
 
 var saludo5 = require('./saludo5').saludo;
 saludo5();

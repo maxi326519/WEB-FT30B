@@ -68,7 +68,7 @@ Cómo ven, lo primero que sale es `prompt >`, esto es porque stdout escribió es
 
 Nuestro proceso, esta vez, no termina inmediatamente. Eso es porque hemos registrado un listener a stdin, entonces Node asume que querés seguir esperando por otro input por parte del usuario. Si querés salir de tu proceso de Node, usá CTRL+C que es la forma normal de interrumpir cualquier proceso.
 
-## Creando Comandos
+## Creando Comandos 
 
 ### `pwd` y `date`
 
