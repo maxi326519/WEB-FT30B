@@ -24,11 +24,29 @@ var beatles=[{
 ]
 
 http.createServer((req, res) => {
-  switch(req.url){
-    case '/':
+
+  var urlArr = req.url.split('/');
+  var url = urlArr[1];
+
+  switch(url){
+    case '':
       res.writeHead(200, { 'Content-Type': 'text/html' });
       var page = fs.readFileSync(__dirname + '/index.html');
       res.end(page);
+      break;
+
+    case 'api':
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      if(urlArr.length === 3){
+        beatles.map( e => {
+          if( e.name === urlArr[2].replace('%20', ' ')) res.end(JSON.stringify(e))
+        })
+      }else if(urlArr.length === 2){
+        res.end(JSON.stringify(beatles));
+      }else{
+        res.end('Error 404: page not found');
+      }
+
       break;
 
     default:
